@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тишина: массажный кабинет (демо-сайт)</title>
+<meta name="description" content="Классический, расслабляющий массаж и лимфодренаж. Подберите сеанс и узнайте стоимость сразу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Палитра: туман, тёмный синий чернильный, янтарь. Главный элемент: калькулятор сеанса. */
+:root{--bg:#E4EBEE;--card:#F3F7F8;--ink:#14232D;--muted:#586B76;--line:#C5D2D9;--amber:#C98623;--amber-soft:#F3DDB4}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Onest,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.demo{background:var(--ink);color:#C8D6DD;text-align:center;font-size:13px;padding:8px 16px}
+h1,h2,h3{font-family:Unbounded,"Segoe UI",sans-serif;font-weight:500;line-height:1.15;text-wrap:balance}
+header{border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:500 20px Unbounded,sans-serif}
+nav{display:flex;gap:26px;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--ink);color:#fff;font:600 16px Onest,sans-serif;padding:14px 26px;border-radius:10px;border:0;cursor:pointer}
+.btn:hover{background:#24394A}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.hero{padding-top:64px;padding-bottom:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.hero h1{font-size:clamp(34px,5.4vw,58px);margin-bottom:20px}
+.hero p{color:var(--muted);font-size:19px;max-width:42ch}
+.calc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px}
+.calc h2{font-size:20px;margin-bottom:4px}
+.calc .hint{color:var(--muted);font-size:15px;margin-bottom:18px}
+.calc fieldset{border:0;margin:0 0 18px}
+.calc legend{font-size:14px;color:var(--muted);margin-bottom:8px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1 1 auto;border:1px solid var(--line);background:transparent;color:var(--ink);padding:11px 14px;border-radius:10px;font:500 15px Onest,sans-serif;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--amber-soft);border-color:var(--amber);color:var(--ink)}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
+.total b{font:500 34px Unbounded,sans-serif}
+.total span{color:var(--muted);font-size:15px}
+section{padding:60px 0}
+h2.big{font-size:clamp(26px,4vw,38px);margin-bottom:12px}
+.sub{color:var(--muted);margin-bottom:28px;max-width:52ch}
+.band{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.helps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.helps h3{font-size:18px;margin-bottom:8px}
+.helps p{color:var(--muted);font-size:16px}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.who ul{list-style:none}
+.who li{padding:14px 0;border-bottom:1px solid var(--line)}
+.who li small{display:block;color:var(--muted)}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+label{display:block;font-size:15px;color:var(--muted);margin:18px 0 8px}
+input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--ink);padding:14px;font:inherit}
+.contacts{list-style:none;margin-top:16px}
+.contacts li{padding:5px 0;color:var(--muted)}
+.contacts b{color:var(--ink);font-weight:600}
+.msg{margin-top:14px;font-weight:600;display:none}
+footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:820px){nav{display:none}.hero,.who,.form{grid-template-columns:1fr;gap:32px}.hero{padding-top:40px;padding-bottom:32px}section{padding:44px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="demo">Демонстрационный сайт: кабинет, специалисты и данные вымышлены, пример работы</div>
+<header><div class="wrap bar">
+  <a class="logo" href="#top">Тишина</a>
+  <nav aria-label="Разделы"><a href="#pomogaet">Когда помогает</a><a href="#specialisty">Специалисты</a><a href="#zapis">Запись</a></nav>
+  <a class="btn" href="#zapis">Записаться</a>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <div>
+    <h1>Массаж, после которого спина перестаёт напоминать о себе</h1>
+    <p>Подберите сеанс справа и сразу увидите стоимость. Приём по записи, без очередей и без спешки.</p>
+  </div>
+  <div class="calc" aria-label="Подбор сеанса">
+    <h2>Подберите сеанс</h2>
+    <p class="hint">Стоимость обновляется сразу, как вы выбираете.</p>
+    <fieldset><legend>Вид массажа</legend>
+      <div class="seg" id="kind" role="group" aria-label="Вид массажа"></div></fieldset>
+    <fieldset><legend>Длительность</legend>
+      <div class="seg" id="dur" role="group" aria-label="Длительность"></div></fieldset>
+    <div class="total"><span id="desc"></span><b id="sum"></b></div>
+    <a class="btn" href="#zapis" id="go" style="display:block;text-align:center;margin-top:18px">Записаться на этот сеанс</a>
+  </div>
+</div>
+
+<section id="pomogaet" class="band"><div class="wrap">
+  <h2 class="big">Когда помогает</h2>
+  <p class="sub">Массаж не лечит, но снимает напряжение, если вы много сидите, носите сумку на одном плече или плохо спите.</p>
+  <div class="helps">
+    <div><h3>Сидячая работа</h3><p>Шея, плечи, поясница. Разминаем зажатые места, показываем простые упражнения.</p></div>
+    <div><h3>После нагрузки</h3><p>Спорт, переезд, дачный сезон. Лёгкий сеанс снимает забитость мышц.</p></div>
+    <div><h3>Усталость и сон</h3><p>Расслабляющий массаж помогает выдохнуть, особенно вечером.</p></div>
+  </div>
+  <p class="sub" style="margin-top:28px;margin-bottom:0">Есть противопоказания, например воспаления, температура и тромбы. Мастер уточнит это перед сеансом.</p>
+</div></section>
+
+<section id="specialisty"><div class="wrap who">
+  <div><h2 class="big">Специалисты</h2><p class="sub">Подскажем, к кому записаться под вашу задачу.</p></div>
+  <ul>
+    <li><b>Максим</b><small>Классический и спортивный массаж, спина и шея</small></li>
+    <li><b>Ольга</b><small>Расслабляющий массаж, работа с отёками</small></li>
+    <li><b>Дарья</b><small>Лимфодренаж, массаж лица и шеи</small></li>
+  </ul>
+</div></section>
+
+<section id="zapis" class="band"><div class="wrap form">
+  <div>
+    <h2 class="big">Запись на сеанс</h2>
+    <p class="sub">Оставьте заявку, подтвердим время в Telegram или MAX.</p>
+    <ul class="contacts">
+      <li><b>Адрес:</b> ул. Примерная, 10, кабинет 4</li>
+      <li><b>Часы работы:</b> пн–сб 9:00 – 20:00</li>
+      <li><b>Телефон:</b> +7 (000) 000-00-00</li>
+    </ul>
+  </div>
+  <form id="f" novalidate>
+    <label for="nm">Имя</label><input id="nm" required placeholder="Как к вам обращаться">
+    <label for="ct">Telegram или телефон</label><input id="ct" required placeholder="@ник или +7">
+    <label for="sv">Сеанс</label><input id="sv" readonly>
+    <label for="cm">Что беспокоит</label><textarea id="cm" rows="3" placeholder="Например, шея после работы за компьютером"></textarea>
+    <button class="btn" style="margin-top:22px;width:100%" type="submit">Отправить заявку</button>
+    <div class="msg" id="m" role="status"></div>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">Демонстрационный сайт кабинета «Тишина»: все данные вымышлены, форма никуда не отправляет заявки.</div></footer>
+
+<script>
+(function(){
+  var kinds={"Классический":{30:1400,60:2500,90:3500},"Расслабляющий":{30:1500,60:2700,90:3800},"Лимфодренаж":{30:1700,60:3000,90:4200}};
+  var kind="Классический",dur=60;
+  var kb=document.getElementById('kind'),db=document.getElementById('dur'),sum=document.getElementById('sum'),desc=document.getElementById('desc'),sv=document.getElementById('sv');
+  function money(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')+' ₽'}
+  function upd(){sum.textContent=money(kinds[kind][dur]);desc.textContent=kind+', '+dur+' минут';sv.value=kind+' массаж, '+dur+' минут, '+money(kinds[kind][dur]);
+    [].forEach.call(kb.children,function(b){b.setAttribute('aria-pressed',String(b.dataset.v===kind))});
+    [].forEach.call(db.children,function(b){b.setAttribute('aria-pressed',String(b.dataset.v===String(dur)))})}
+  Object.keys(kinds).forEach(function(k){var b=document.createElement('button');b.type='button';b.textContent=k;b.dataset.v=k;b.onclick=function(){kind=k;upd()};kb.appendChild(b)});
+  [30,60,90].forEach(function(d){var b=document.createElement('button');b.type='button';b.textContent=d+' мин';b.dataset.v=String(d);b.onclick=function(){dur=d;upd()};db.appendChild(b)});
+  upd();
+  var f=document.getElementById('f'),m=document.getElementById('m');
+  f.addEventListener('submit',function(e){e.preventDefault();m.style.display='block';
+    if(!f.nm.value||!f.ct.value){m.textContent='Заполните имя и контакт.';return}
+    m.textContent='Спасибо, '+f.nm.value+'! Это демо: заявка никуда не отправлена.';});
+})();
+</script>
+</body>
+</html>

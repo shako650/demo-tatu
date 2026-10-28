@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мята: студия маникюра (демо-сайт)</title>
+<meta name="description" content="Маникюр, педикюр и покрытие гель-лаком. Выбирайте оттенок и записывайтесь онлайн.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Палитра: мятный туман, глубокий лесной, выбранный оттенок лака (меняется) */
+:root{--bg:#EAF1EE;--card:#F6FAF8;--ink:#17332B;--muted:#5C7269;--line:#CBD9D3;--accent:#E8707F;--accent-ink:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Golos Text","Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.demo{background:var(--ink);color:#CFE0D8;text-align:center;font-size:13px;padding:8px 16px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.05;text-wrap:balance}
+header{border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:30px;font-weight:600}
+nav{display:flex;gap:26px;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);font:600 16px "Golos Text",sans-serif;padding:14px 26px;border-radius:999px;border:0;cursor:pointer;transition:background .25s}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.sw:focus-visible,.chip:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.hero{padding-top:72px;padding-bottom:56px}
+.hero h1{font-size:clamp(46px,8vw,92px);max-width:11ch}
+.hero p{margin:22px 0 30px;color:var(--muted);max-width:44ch;font-size:19px}
+.swatches{margin-top:44px}
+.swatches p{margin:0 0 12px;font-size:15px;color:var(--muted)}
+.swatches b{color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.sw{width:46px;height:46px;border-radius:50%;border:3px solid var(--bg);box-shadow:0 0 0 1px var(--line);cursor:pointer;background:var(--c);transition:transform .2s}
+.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink);transform:scale(1.08)}
+section{padding:64px 0}
+h2{font-size:clamp(34px,5vw,52px);margin-bottom:10px}
+.sub{color:var(--muted);margin-bottom:32px;max-width:52ch}
+.price{width:100%;border-collapse:collapse}
+.price td{padding:18px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.price td:last-child{text-align:right;white-space:nowrap;font-weight:600}
+.price small{display:block;color:var(--muted);font-size:15px;font-weight:400}
+.band{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.master{padding:22px 0;border-bottom:1px solid var(--line)}
+.master h3{font-size:30px}
+.master p{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:10px 16px;font:500 15px "Golos Text",sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+label{display:block;font-size:15px;color:var(--muted);margin:20px 0 8px}
+input,select,textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--ink);padding:14px;font:inherit}
+.msg{margin-top:14px;font-weight:600;display:none}
+.contacts{list-style:none;margin-top:18px}
+.contacts li{padding:6px 0;color:var(--muted)}
+.contacts b{color:var(--ink);font-weight:600}
+footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media(max-width:760px){nav{display:none}.two{grid-template-columns:1fr;gap:32px}.hero{padding-top:44px;padding-bottom:32px}section{padding:44px 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="demo">Демонстрационный сайт: студия, мастера и данные вымышлены, пример работы</div>
+<header><div class="wrap bar">
+  <a class="logo" href="#top">Мята</a>
+  <nav aria-label="Разделы"><a href="#uslugi">Услуги и цены</a><a href="#mastera">Мастера</a><a href="#zapis">Запись</a></nav>
+  <a class="btn" href="#zapis">Записаться</a>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+  <h1>Маникюр без спешки и очередей</h1>
+  <p>Обработка, форма и покрытие в одно посещение. Выберите оттенок, который вам нравится, и запишитесь на удобное время.</p>
+  <a class="btn" href="#zapis">Выбрать время</a>
+  <div class="swatches">
+    <p>Оттенок сезона: <b id="swname">Пыльная роза</b>. Нажмите на кружок, сайт подстроится под цвет.</p>
+    <div class="row" id="sw" role="group" aria-label="Оттенки гель-лака"></div>
+  </div>
+</div>
+
+<section id="uslugi" class="band"><div class="wrap">
+  <h2>Услуги и цены</h2>
+  <p class="sub">Цены указаны за работу мастера. Точную стоимость назовём на месте, если нужен дизайн или снятие.</p>
+  <table class="price">
+    <tr><td>Маникюр с покрытием<small>обработка, выравнивание, гель-лак в один цвет, 2 часа</small></td><td>от 2 200 ₽</td></tr>
+    <tr><td>Маникюр без покрытия<small>классический или аппаратный, 1 час</small></td><td>от 1 200 ₽</td></tr>
+    <tr><td>Педикюр с покрытием<small>обработка стопы и ногтей, гель-лак</small></td><td>от 2 800 ₽</td></tr>
+    <tr><td>Наращивание<small>форма по вашему выбору</small></td><td>от 3 500 ₽</td></tr>
+    <tr><td>Дизайн<small>французский, втирка, рисунок, за один ноготь</small></td><td>от 100 ₽</td></tr>
+    <tr><td>Снятие чужого покрытия<small>при записи на новое</small></td><td>300 ₽</td></tr>
+  </table>
+</div></section>
+
+<section id="mastera"><div class="wrap two">
+  <div>
+    <h2>Мастера</h2>
+    <p class="sub">Каждый работает в своём стиле. Расскажем, к кому лучше записаться под вашу идею.</p>
+  </div>
+  <div>
+    <div class="master"><h3>Алиса</h3><p>Аппаратный маникюр, короткая форма, нюдовые оттенки.</p></div>
+    <div class="master"><h3>Кира</h3><p>Наращивание, дизайн, сложные цвета.</p></div>
+    <div class="master"><h3>Вера</h3><p>Педикюр, уход за кожей стоп.</p></div>
+  </div>
+</div></section>
+
+<section id="zapis" class="band"><div class="wrap two">
+  <div>
+    <h2>Запись</h2>
+    <p class="sub">Выберите день и время, мы подтвердим запись в Telegram или MAX.</p>
+    <ul class="contacts">
+      <li><b>Адрес:</b> ул. Примерная, 10</li>
+      <li><b>Часы работы:</b> ежедневно 10:00 – 21:00</li>
+      <li><b>Телефон:</b> +7 (000) 000-00-00</li>
+    </ul>
+  </div>
+  <form id="f" novalidate>
+    <label for="nm">Имя</label><input id="nm" required placeholder="Как к вам обращаться">
+    <label for="ct">Telegram или телефон</label><input id="ct" required placeholder="@ник или +7">
+    <label id="dl">День</label>
+    <div class="chips" id="days" role="group" aria-labelledby="dl"></div>
+    <label id="tl">Время</label>
+    <div class="chips" id="times" role="group" aria-labelledby="tl"></div>
+    <label for="sv">Услуга</label>
+    <select id="sv"><option>Маникюр с покрытием</option><option>Маникюр без покрытия</option><option>Педикюр</option><option>Наращивание</option></select>
+    <button class="btn" style="margin-top:24px;width:100%" type="submit">Записаться</button>
+    <div class="msg" id="m" role="status"></div>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">Демонстрационный сайт студии «Мята»: все данные вымышлены, форма никуда не отправляет заявки.</div></footer>
+
+<script>
+(function(){
+  var colors=[["Пыльная роза","#E8707F","#fff"],["Шалфей","#7FA08B","#fff"],["Корица","#B9774A","#fff"],["Васильковый","#5C7FD0","#fff"],["Тёмная слива","#6E3050","#fff"],["Молочный","#E9DCCB","#17332B"],["Мандарин","#F08A3C","#17332B"],["Графит","#3A4048","#fff"]];
+  var box=document.getElementById('sw'),nameEl=document.getElementById('swname'),root=document.documentElement.style;
+  function pick(i,btns){var c=colors[i];root.setProperty('--accent',c[1]);root.setProperty('--accent-ink',c[2]);nameEl.textContent=c[0];btns.forEach(function(b,j){b.setAttribute('aria-pressed',String(j===i))})}
+  var btns=colors.map(function(c,i){var b=document.createElement('button');b.type='button';b.className='sw';b.style.setProperty('--c',c[1]);b.setAttribute('aria-label',c[0]);b.setAttribute('aria-pressed','false');b.onclick=function(){pick(i,btns)};box.appendChild(b);return b});
+  pick(0,btns);
+  var dn=['вс','пн','вт','ср','чт','пт','сб'],days=document.getElementById('days'),times=document.getElementById('times'),dsel=null,tsel=null;
+  function mk(parent,text,cb){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=text;b.setAttribute('aria-pressed','false');b.onclick=function(){[].forEach.call(parent.children,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');cb(text)};parent.appendChild(b)}
+  for(var i=0;i<7;i++){var d=new Date();d.setDate(d.getDate()+i);mk(days,(i===0?'сегодня':dn[d.getDay()]+' '+d.getDate()),function(t){dsel=t})}
+  ['10:00','12:00','14:30','16:00','18:30','20:00'].forEach(function(t){mk(times,t,function(x){tsel=x})});
+  var f=document.getElementById('f'),m=document.getElementById('m');
+  f.addEventListener('submit',function(e){e.preventDefault();m.style.display='block';
+    if(!f.nm.value||!f.ct.value||!dsel||!tsel){m.textContent='Заполните имя, контакт, день и время.';return}
+    m.textContent='Спасибо, '+f.nm.value+'! Записали на '+dsel+' в '+tsel+'. Это демо: заявка никуда не отправлена.';});
+})();
+</script>
+</body>
+</html>
