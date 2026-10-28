@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Чёрный Лис: тату-студия в Краснодаре (демо-сайт)</title>
+<meta name="description" content="Татуировки любой сложности, эскиз бесплатно, стерильные одноразовые материалы. Запись на сеанс онлайн.">
+<style>
+:root{--bg:#0b0b0d;--card:#141418;--line:#26262d;--text:#f1efea;--muted:#a09d96;--accent:#d8b26a;--red:#c8442f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.demo{background:#1a1a20;color:var(--muted);text-align:center;font-size:13px;padding:8px}
+header{position:sticky;top:0;z-index:10;background:rgba(11,11,13,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-weight:800;font-size:22px;letter-spacing:2px;text-transform:uppercase}.logo b{color:var(--accent)}
+nav{display:flex;gap:24px;font-size:15px;color:var(--muted)}nav a:hover{color:var(--text)}
+.btn{display:inline-block;background:var(--accent);color:#1b1407;font-weight:700;padding:13px 26px;border-radius:4px;border:0;cursor:pointer;font-size:15px;letter-spacing:.5px;text-transform:uppercase;transition:.15s}
+.btn:hover{background:#ecc98a}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero{padding:96px 0 80px;background:radial-gradient(800px 420px at 85% 0,rgba(200,68,47,.22),transparent),radial-gradient(600px 300px at 0 100%,rgba(216,178,106,.10),transparent)}
+.kicker{color:var(--accent);letter-spacing:3px;font-size:13px;text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-size:clamp(34px,6vw,64px);line-height:1.05;font-weight:800;max-width:780px;text-transform:uppercase}
+.hero h1 span{color:var(--accent)}
+.hero p{margin:24px 0 34px;color:var(--muted);font-size:19px;max-width:540px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:60px}
+.fact{border-top:2px solid var(--accent);padding-top:14px}
+.fact b{font-size:26px;display:block}.fact span{color:var(--muted);font-size:14px}
+section{padding:72px 0}
+h2{font-size:clamp(26px,3.6vw,38px);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.sub{color:var(--muted);margin-bottom:34px;max-width:560px}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tile{aspect-ratio:1/1;border-radius:6px;border:1px solid var(--line);display:flex;align-items:flex-end;padding:12px;font-size:13px;color:var(--muted);position:relative;overflow:hidden}
+.tile::before{content:"";position:absolute;inset:0;background:var(--g);opacity:.9}
+.tile span{position:relative;background:rgba(0,0,0,.55);padding:3px 8px;border-radius:3px;color:var(--text)}
+.note{margin-top:14px;font-size:13px;color:var(--muted)}
+.masters{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.m{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px}
+.av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--red));margin-bottom:14px}
+.m h3{font-size:18px}.m p{color:var(--muted);font-size:15px;margin-top:6px}
+.prices{width:100%;border-collapse:collapse}
+.prices td{padding:16px 0;border-bottom:1px solid var(--line);font-size:17px}
+.prices td:last-child{text-align:right;color:var(--accent);font-weight:700;white-space:nowrap}
+.prices small{display:block;color:var(--muted);font-size:14px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;counter-reset:s}
+.st{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px}
+.st::before{counter-increment:s;content:"0" counter(s);display:block;color:var(--accent);font-size:28px;font-weight:800;margin-bottom:8px}
+.st p{color:var(--muted);font-size:15px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:28px}
+label{display:block;font-size:14px;color:var(--muted);margin:14px 0 6px}
+input,select,textarea{width:100%;background:#0b0b0d;border:1px solid var(--line);border-radius:4px;color:var(--text);padding:13px 14px;font:inherit}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.contacts li{list-style:none;margin:12px 0;color:var(--muted)}.contacts b{color:var(--text)}
+.msg{margin-top:12px;color:var(--accent);display:none}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px}
+@media(max-width:760px){nav{display:none}.facts{grid-template-columns:1fr 1fr}.gal{grid-template-columns:1fr 1fr}.form{grid-template-columns:1fr}.hero{padding:56px 0 44px}}
+</style>
+</head>
+<body>
+<div class="demo">Демонстрационный сайт: студия и данные вымышлены, пример работы</div>
+<header><div class="wrap bar">
+  <a class="logo" href="#top">Чёрный <b>Лис</b></a>
+  <nav><a href="#raboty">Работы</a><a href="#mastera">Мастера</a><a href="#ceny">Цены</a><a href="#zapis">Запись</a></nav>
+  <a class="btn" href="#zapis">Записаться</a>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <div class="kicker">Тату-студия · Краснодар</div>
+  <h1>Татуировка, которую вы <span>не захотите скрывать</span></h1>
+  <p>Эскиз под вас бесплатно, одноразовые стерильные материалы и мастера с портфолио. Запишитесь онлайн, мы подтвердим время в Telegram или MAX.</p>
+  <div class="cta"><a class="btn" href="#zapis">Записаться на сеанс</a><a class="btn ghost" href="#raboty">Смотреть работы</a></div>
+  <div class="facts">
+    <div class="fact"><b>9 лет</b><span>на рынке</span></div>
+    <div class="fact"><b>3 мастера</b><span>в студии</span></div>
+    <div class="fact"><b>100%</b><span>одноразовые материалы</span></div>
+    <div class="fact"><b>Бесплатно</b><span>эскиз и консультация</span></div>
+  </div>
+</div></div>
+
+<section id="raboty"><div class="wrap">
+  <h2>Работы мастеров</h2><p class="sub">Реалистичные портреты, графика, минимализм и акварель. Покажите, что нравится, и мы подберём стиль.</p>
+  <div class="gal">
+    <div class="tile" style="--g:linear-gradient(135deg,#2a2018,#6b3a22)"><span>Реализм</span></div>
+    <div class="tile" style="--g:linear-gradient(135deg,#1a1a22,#3c4a66)"><span>Графика</span></div>
+    <div class="tile" style="--g:linear-gradient(135deg,#221418,#7a2e3c)"><span>Акварель</span></div>
+    <div class="tile" style="--g:linear-gradient(135deg,#17201a,#3d6a4c)"><span>Орнамент</span></div>
+    <div class="tile" style="--g:linear-gradient(135deg,#201c14,#8a7230)"><span>Минимализм</span></div>
+    <div class="tile" style="--g:linear-gradient(135deg,#1b1420,#5a3a7a)"><span>Блэкворк</span></div>
+    <div class="tile" style="--g:linear-gradient(135deg,#141c22,#2e6a7a)"><span>Леттеринг</span></div>
+    <div class="tile" style="--g:linear-gradient(135deg,#221a14,#a8542a)"><span>Перекрытие</span></div>
+  </div>
+  <p class="note">Здесь будут реальные фото работ студии. Сейчас показаны макеты плиток.</p>
+</div></section>
+
+<section id="mastera" style="background:#101013"><div class="wrap">
+  <h2>Мастера</h2><p class="sub">У каждого свой стиль. Подскажем, к кому записаться под вашу идею.</p>
+  <div class="masters">
+    <div class="m"><div class="av"></div><h3>Мастер Артём</h3><p>Реализм, портреты. Опыт 8 лет.</p></div>
+    <div class="m"><div class="av"></div><h3>Мастер Анна</h3><p>Акварель, минимализм, нежные работы.</p></div>
+    <div class="m"><div class="av"></div><h3>Мастер Илья</h3><p>Графика, блэкворк, перекрытие старых тату.</p></div>
+  </div>
+</div></section>
+
+<section id="ceny"><div class="wrap">
+  <h2>Цены</h2><p class="sub">Точную цену назовём после эскиза, это бесплатно и ни к чему не обязывает.</p>
+  <table class="prices">
+    <tr><td>Небольшая тату до 5 см<small>минимализм, надпись, символ</small></td><td>от 4 000 ₽</td></tr>
+    <tr><td>Средняя работа до 15 см<small>один сеанс, 2–3 часа</small></td><td>от 9 000 ₽</td></tr>
+    <tr><td>Крупная работа, рукав<small>несколько сеансов</small></td><td>от 25 000 ₽</td></tr>
+    <tr><td>Перекрытие старой татуировки<small>после консультации мастера</small></td><td>от 12 000 ₽</td></tr>
+    <tr><td>Индивидуальный эскиз<small>под вашу идею</small></td><td>0 ₽</td></tr>
+  </table>
+</div></section>
+
+<section style="background:#101013"><div class="wrap">
+  <h2>Как проходит сеанс</h2><p class="sub">Четыре шага от идеи до готовой работы.</p>
+  <div class="steps">
+    <div class="st"><h3>Заявка</h3><p>Опишите идею или пришлите референсы.</p></div>
+    <div class="st"><h3>Эскиз</h3><p>Мастер рисует эскиз, вы согласуете детали.</p></div>
+    <div class="st"><h3>Сеанс</h3><p>Работаем в чистой кабинке, всё одноразовое.</p></div>
+    <div class="st"><h3>Уход</h3><p>Выдаём инструкцию по заживлению и на связи после.</p></div>
+  </div>
+</div></section>
+
+<section id="zapis"><div class="wrap form">
+  <div>
+    <h2>Запись на сеанс</h2>
+    <p class="sub">Оставьте заявку, подтвердим время в Telegram или MAX в течение часа.</p>
+    <ul class="contacts">
+      <li><b>Адрес:</b> г. Краснодар, ул. Примерная, 10</li>
+      <li><b>Часы работы:</b> ежедневно 11:00 – 21:00</li>
+      <li><b>Телефон:</b> +7 (000) 000-00-00</li>
+    </ul>
+  </div>
+  <form class="box" onsubmit="return send(event)">
+    <label>Имя</label><input required placeholder="Как к вам обращаться">
+    <label>Телефон или Telegram</label><input required placeholder="+7 или @ник">
+    <label>Стиль</label>
+    <select><option>Не знаю, подскажите</option><option>Реализм</option><option>Графика</option><option>Акварель</option><option>Минимализм</option><option>Перекрытие</option></select>
+    <label>Идея, место на теле</label><textarea rows="3" placeholder="Что хотите набить и где"></textarea>
+    <button class="btn" style="margin-top:18px;width:100%" type="submit">Отправить заявку</button>
+    <div class="msg" id="m">Спасибо! Заявка принята, мы свяжемся с вами.</div>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">© Чёрный Лис. Демонстрационный сайт, пример работы. Все данные вымышлены.</div></footer>
+<script>function send(e){e.preventDefault();document.getElementById('m').style.display='block';e.target.reset();return false}</script>
+</body>
+</html>
